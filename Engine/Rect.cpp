@@ -21,6 +21,12 @@ Rect::Rect(const Vec2 topLeft, float width, float height)
 {
 }
 
+Rect Rect::FromCenter(const Vec2 center, float halfWidth, float halfHeight)
+{
+	Vec2 half(halfWidth, halfHeight);
+	return Rect(center - half, center + half);
+}
+
 bool Rect::IsCollidingWith(const Rect& rect) const
 {
 	return left < rect.right &&
