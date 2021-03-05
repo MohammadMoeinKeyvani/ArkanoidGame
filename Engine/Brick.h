@@ -11,7 +11,6 @@ public:
 	void Draw(Graphics& gfx);
 private:
 	Rect rect;
-	Vec2 position;
 	Color color;
 	bool destroyed = false;
 };
