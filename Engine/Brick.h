@@ -1,16 +1,16 @@
 #pragma once
 
-#include "Rectangle.h"
+#include "Rect.h"
 #include "Colors.h"
 #include "Graphics.h"
 
 class Brick
 {
 public:
-	Brick(const Rectangle& rectInput, Color c);
+	Brick(const Rect& rectInput, Color c);
 	void Draw(Graphics& gfx);
 private:
-	Rectangle rect;
+	Rect rect;
 	Vec2 position;
 	Color color;
 	bool destroyed = false;
