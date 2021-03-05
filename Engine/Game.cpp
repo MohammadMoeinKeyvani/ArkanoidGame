@@ -21,10 +21,15 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd )
+	wnd(wnd),
+	gfx(wnd),
+	rect(100, 100, 200, 200),
+	brick(rect, Colors::Cyan),
+	ball(Vec2(300.0f, 300.0f), Vec2(300.0f, 300.0f)),
+	wall(0.0f, 0.0f, float(gfx.ScreenWidth), float(gfx.ScreenHeight)),
+	ballToWallSound(L"Sounds\\arkpad.wav")
 {
 }
 
@@ -38,8 +43,16 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	const float deltaTime = ft.Mark();
+	ball.Update(deltaTime);
+	if (ball.IsCollidingWithWall(wall))
+	{
+		ballToWallSound.Play();
+	}
 }
 
 void Game::ComposeFrame()
 {
+	brick.Draw(gfx);
+	ball.Draw(gfx);
 }
