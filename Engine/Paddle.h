@@ -20,4 +20,6 @@ private:
 	float halfWidth;
 	float halfHeight;
 	float speed = 200;
+	float margin = halfWidth / 5.0f;
+	Color marginColor = Colors::Red;
 };

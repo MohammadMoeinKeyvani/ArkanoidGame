@@ -45,7 +45,11 @@ void Paddle::Update(float deltaTime, Keyboard& keyboard)
 
 void Paddle::Draw(Graphics& gfx)
 {
-	gfx.DrawRect(GetRectangle(), color);
+	gfx.DrawRect(GetRectangle(), marginColor);
+	Rect r = GetRectangle();
+	r.left += margin;
+	r.right -= margin;
+	gfx.DrawRect(r, color);
 }
 
 Rect Paddle::GetRectangle() const

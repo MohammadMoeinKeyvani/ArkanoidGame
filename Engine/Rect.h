@@ -11,6 +11,7 @@ public:
 	Rect(const Vec2 topLeft, float width, float height);
 	static Rect FromCenter(const Vec2 center, float halfWidth, float halfHeight);
 	bool IsCollidingWith(const Rect& rect) const;
+	Rect GetExpanded(float offset) const;
 public:
 	float left;
 	float top;

@@ -34,3 +34,8 @@ bool Rect::IsCollidingWith(const Rect& rect) const
 		top < rect.bottom &&
 		bottom > rect.top;
 }
+
+Rect Rect::GetExpanded(float offset) const
+{
+	return Rect(left - offset, top - offset, right + offset, bottom + offset);
+}
