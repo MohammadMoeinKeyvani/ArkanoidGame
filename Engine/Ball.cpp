@@ -64,3 +64,8 @@ Rect Ball::GetRectangle()
 	Rect rectBall;
 	return rectBall.FromCenter(position, radius, radius);
 }
+
+Vec2 Ball::GetVelocity()
+{
+	return velocity;
+}

@@ -14,6 +14,7 @@ public:
 	void ReboundX();
 	void ReboundY();
 	Rect GetRectangle();
+	Vec2 GetVelocity();
 private:
 	Vec2 position;
 	Vec2 velocity;

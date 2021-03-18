@@ -25,11 +25,13 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	rect(100, 100, 200, 200),
+	rect(100, 100, 150, 120),
 	brick(rect, Colors::Cyan),
 	ball(Vec2(300.0f, 300.0f), Vec2(300.0f, 300.0f)),
 	wall(0.0f, 0.0f, float(gfx.ScreenWidth), float(gfx.ScreenHeight)),
-	ballToWallSound(L"Sounds\\arkpad.wav")
+	paddleSound(L"Sounds\\arkpad.wav"),
+	brickSound(L"Sounds\\arkbrick.wav"),
+	paddle(Vec2(400.0f, 500.0f), 50.0f, 15.0f)
 {
 }
 
@@ -44,11 +46,23 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	const float deltaTime = ft.Mark();
+
+	paddle.Update(deltaTime, wnd.kbd);
+	paddle.DoWallCollision(wall);
+
+	if (paddle.DoBallCollision(ball))
+	{
+		paddleSound.Play();
+	}
 	ball.Update(deltaTime);
-	brick.DoBallCollision(ball);
+	
+	if (brick.DoBallCollision(ball))
+	{
+		brickSound.Play();
+	}
 	if (ball.IsCollidingWithWall(wall))
 	{
-		ballToWallSound.Play();
+		paddleSound.Play();
 	}
 }
 
@@ -56,4 +70,5 @@ void Game::ComposeFrame()
 {
 	brick.Draw(gfx);
 	ball.Draw(gfx);
+	paddle.Draw(gfx);
 }
