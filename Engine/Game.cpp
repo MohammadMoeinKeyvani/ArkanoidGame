@@ -45,6 +45,7 @@ void Game::UpdateModel()
 {
 	const float deltaTime = ft.Mark();
 	ball.Update(deltaTime);
+	brick.DoBallCollision(ball);
 	if (ball.IsCollidingWithWall(wall))
 	{
 		ballToWallSound.Play();
