@@ -47,9 +47,14 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	static constexpr int brickWidth = 40;
+	static constexpr int brickHeight = 20;
+	static constexpr int numberOfBrickColumns = 14;
+	static constexpr int numberOfBrickRows = 4;
+	static constexpr int numberOfBricks = numberOfBrickColumns * numberOfBrickRows;
 	Rect rect;
 	Rect wall;
-	Brick brick;
+	Brick bricks[numberOfBricks];
 	FrameTimer ft;
 	Ball ball;
 	Sound paddleSound;
